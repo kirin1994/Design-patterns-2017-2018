@@ -11,66 +11,28 @@ namespace Singleton
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("1: lock, 2: double check, 3: Simple singleton");
-            string chose = Console.ReadLine();
-            switch (chose)
-            {
-                case "1":
-                    var watch = System.Diagnostics.Stopwatch.StartNew();
+            var db = dbConnectSingletonLock.Instance;
+            var age = db.GetAge("Adrian");
 
-                    FileService logConnection = Logger.Instance;
-                    FileService logConnection2 = Logger.Instance;
-                    logConnection.Log("first log");
-                    logConnection.Log("test log");
-                    logConnection2.Log("first log");
-                    logConnection2.Log("test log");
-                    logConnection.ReadLogFile();
-                    logConnection.ClearLog();
-                    watch.Stop();
-                    var elapsedMs = watch.ElapsedMilliseconds;
-                    Console.WriteLine($"Time:{elapsedMs}");
-                    Console.ReadKey();
-                    break;
+            Console.WriteLine($"age{age}");
 
-                case "2":
-                    var watch2 = System.Diagnostics.Stopwatch.StartNew();
-                    FileService logConnection3 = Logger2.Instance;
-                    FileService logConnection4 = Logger2.Instance;
-                    logConnection3.Log("first log");
-                    logConnection3.Log("test log");
-                    logConnection4.Log("first log");
-                    logConnection4.Log("test log");
-                    logConnection3.ReadLogFile();
-                    logConnection3.ClearLog();
-                    watch2.Stop();
-                    var elapsed2Ms = watch2.ElapsedMilliseconds;
-                    Console.WriteLine($"Time:{elapsed2Ms}");
-                    Console.ReadKey();
-                    break;
+            var db2 = dbConnectSingletonDblCheck.Instance;
+            var age2 = db.GetAge("Adrian");
 
-                case "3":
-                    var watch3 = System.Diagnostics.Stopwatch.StartNew();
-                    FileService logConnection5 = Logger3.Instance;
-                    FileService logConnection6 = Logger3.Instance;
-                    logConnection5.Log("first log");
-                    logConnection5.Log("test log");
-                    logConnection6.Log("first log");
-                    logConnection6.Log("test log");
-                    logConnection5.ReadLogFile();
-                    logConnection5.ClearLog();
-                    watch3.Stop();
-                    var elapsed3Ms = watch3.ElapsedMilliseconds;
-                    Console.WriteLine($"Time:{elapsed3Ms}");
-                    Console.ReadKey();
-                    break;
+            Console.WriteLine($"age{age2}");
 
-                case "4":
-                        
+            var db3= dbConnectSingletonNoLock.Instance;
+            var age3 = db.GetAge("Adrian");
 
-                        break;
-            }
-            
+            Console.WriteLine($"age{age3}");
 
+            var db4 = dbConnectSingletonNoLockSafe.Instance;
+            var age4 = db.GetAge("Adrian");
+
+            Console.WriteLine($"age{age4}");
+
+
+            Console.ReadKey();
            
         }
     }
