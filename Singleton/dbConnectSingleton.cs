@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Singleton
 {
-    sealed class dbConnectSingletonNoLock : IDataContext
+    sealed class dbConnectSingleton : IDataContext
     {
-        private static dbConnectSingletonNoLock instance = null;
+        private static dbConnectSingleton instance = null;
 
         private static int instancesCount;
 
@@ -18,7 +18,7 @@ namespace Singleton
 
         private Dictionary<string, int> students;
 
-        private dbConnectSingletonNoLock()
+        private dbConnectSingleton()
         {
             instancesCount++;
             Console.WriteLine("Initialization of db");
@@ -34,13 +34,13 @@ namespace Singleton
             return students[name];
         }
 
-        public static dbConnectSingletonNoLock Instance
+        public static dbConnectSingleton Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new dbConnectSingletonNoLock();
+                    instance = new dbConnectSingleton();
                 }
                 return instance;
             }

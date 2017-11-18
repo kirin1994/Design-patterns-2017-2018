@@ -62,7 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dbConnectSingletonNoLock.cs" />
+    <Compile Include="dbConnectSingleton.cs" />
     <Compile Include="dbConnectSingletonDblCheck.cs" />
     <Compile Include="dbConnectSingletonLock.cs" />
     <Compile Include="dbConnectSingletonNoLockSafe.cs" />

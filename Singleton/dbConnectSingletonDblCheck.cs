@@ -10,7 +10,7 @@ namespace Singleton
 {
     sealed class dbConnectSingletonDblCheck :IDataContext
     {
-        private static dbConnectSingletonDblCheck logger = null;
+        private static dbConnectSingletonDblCheck dbContext = null;
 
         private static readonly object lockThread = new object();
 
@@ -35,19 +35,19 @@ namespace Singleton
         {
             get
             {
-                if (logger == null)
+                if (dbContext == null)
                 {
                     lock (lockThread)
                     {
-                        if (logger == null)
+                        if (dbContext == null)
                         {
-                            logger = new dbConnectSingletonDblCheck();
+                            dbContext = new dbConnectSingletonDblCheck();
 
                         }
-                        return logger;
+                        return dbContext;
                     }
                 }
-                return logger;
+                return dbContext;
             }
         }
 

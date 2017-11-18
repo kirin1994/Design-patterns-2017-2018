@@ -21,7 +21,7 @@ namespace Singleton
 
             Console.WriteLine($"age{age2}");
 
-            var db3= dbConnectSingletonNoLock.Instance;
+            var db3= dbConnectSingleton.Instance;
             var age3 = db.GetAge("Adrian");
 
             Console.WriteLine($"age{age3}");
