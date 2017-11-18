@@ -12,7 +12,7 @@ namespace Singleton
     {
 
         [Test]
-        public void NoLockIsSingleton()
+        public void NoLockIsThreadSafe()
         {
             var listOfTasks = new List<Task>();
             for (int i = 0; i < 1000; i++)
@@ -41,7 +41,7 @@ namespace Singleton
 
 
         [Test]
-        public void LockIsSingleton()
+        public void LockIsThreadSafe()
         {
             var listOfTasks = new List<Task>();
             for (int i = 0; i < 1000; i++)
@@ -70,7 +70,7 @@ namespace Singleton
 
 
         [Test]
-        public void DblCheckIsSingleton()
+        public void DblCheckIsThreadSafen()
         {
             var listOfTasks = new List<Task>();
             for (int i = 0; i < 1000; i++)
@@ -99,7 +99,7 @@ namespace Singleton
 
 
         [Test]
-        public void NoLockSafeIsSingleton()
+        public void NoLockSafeIsThreadSafe()
         {
             var listOfTasks = new List<Task>();
             for (int i = 0; i < 1000; i++)
