@@ -35,8 +35,8 @@ namespace Singleton
 
         void NoLock()
         {
-            var db = dbConnectSingleton.Instance;
-            var db2 = dbConnectSingleton.Instance;
+            IDataContext db = dbConnectSingleton.Instance;
+            IDataContext db2 = dbConnectSingleton.Instance;
         }
 
 
@@ -64,8 +64,8 @@ namespace Singleton
 
         void Lock()
         {
-            var db = dbConnectSingletonLock.Instance;
-            var db2 = dbConnectSingletonLock.Instance;
+            IDataContext  db = dbConnectSingletonLock.Instance;
+            IDataContext  db2 = dbConnectSingletonLock.Instance;
         }
 
 
@@ -93,8 +93,8 @@ namespace Singleton
         void DblCheck()
         {
 
-            var db = dbConnectSingletonDblCheck.Instance;
-            var db2 = dbConnectSingletonDblCheck.Instance;
+            IDataContext db = dbConnectSingletonDblCheck.Instance;
+            IDataContext db2 = dbConnectSingletonDblCheck.Instance;
         }
 
 
@@ -122,8 +122,8 @@ namespace Singleton
         void NoLockSafe()
         {
 
-            var db = dbConnectSingletonDblCheck.Instance;
-            var db2 = dbConnectSingletonDblCheck.Instance;
+            IDataContext db = dbConnectSingletonDblCheck.Instance;
+            IDataContext db2 = dbConnectSingletonDblCheck.Instance;
         }
 
 
