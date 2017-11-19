@@ -18,7 +18,7 @@ namespace Singleton
             for (int i = 0; i < 1000; i++)
             {
                 var count = i;
-                listOfTasks.Add(new Task(() => NoLock()));
+                listOfTasks.Add(new Task(() => InstanceCallFactory.NoLock()));
             }
 
             Task.Factory.StartNew(() => listOfTasks.ForEach(task => task.Start()));
@@ -32,14 +32,6 @@ namespace Singleton
 
         }
 
-
-        void NoLock()
-        {
-            IDataContext db = dbConnectSingleton.Instance;
-            IDataContext db2 = dbConnectSingleton.Instance;
-        }
-
-
         [Test]
         public void LockIsThreadSafe()
         {
@@ -47,7 +39,7 @@ namespace Singleton
             for (int i = 0; i < 1000; i++)
             {
                 var count = i;
-                listOfTasks.Add(new Task(() => Lock()));
+                listOfTasks.Add(new Task(() => InstanceCallFactory.Lock()));
             }
 
             Task.Factory.StartNew(() => listOfTasks.ForEach(task => task.Start()));
@@ -61,14 +53,6 @@ namespace Singleton
 
         }
 
-
-        void Lock()
-        {
-            IDataContext  db = dbConnectSingletonLock.Instance;
-            IDataContext  db2 = dbConnectSingletonLock.Instance;
-        }
-
-
         [Test]
         public void DblCheckIsThreadSafen()
         {
@@ -76,7 +60,7 @@ namespace Singleton
             for (int i = 0; i < 1000; i++)
             {
                 var count = i;
-                listOfTasks.Add(new Task(() => DblCheck()));
+                listOfTasks.Add(new Task(() => InstanceCallFactory.DblCheck()));
             }
 
             Task.Factory.StartNew(() => listOfTasks.ForEach(task => task.Start()));
@@ -89,15 +73,6 @@ namespace Singleton
 
         }
 
-
-        void DblCheck()
-        {
-
-            IDataContext db = dbConnectSingletonDblCheck.Instance;
-            IDataContext db2 = dbConnectSingletonDblCheck.Instance;
-        }
-
-
         [Test]
         public void NoLockSafeIsThreadSafe()
         {
@@ -105,7 +80,7 @@ namespace Singleton
             for (int i = 0; i < 1000; i++)
             {
                 var count = i;
-                listOfTasks.Add(new Task(() => NoLockSafe()));
+                listOfTasks.Add(new Task(() => InstanceCallFactory.NoLockSafe()));
             }
 
             Task.Factory.StartNew(() => listOfTasks.ForEach(task => task.Start()));
@@ -118,14 +93,5 @@ namespace Singleton
             Assert.That(dbConnectSingletonNoLockSafe.Count, Is.EqualTo(1));
 
         }
-
-        void NoLockSafe()
-        {
-
-            IDataContext db = dbConnectSingletonDblCheck.Instance;
-            IDataContext db2 = dbConnectSingletonDblCheck.Instance;
-        }
-
-
     }
 }

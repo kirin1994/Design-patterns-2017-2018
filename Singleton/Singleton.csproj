@@ -67,6 +67,7 @@
     <Compile Include="dbConnectSingletonLock.cs" />
     <Compile Include="dbConnectSingletonNoLockSafe.cs" />
     <Compile Include="IDataContext.cs" />
+    <Compile Include="InstanceCallFactory.cs" />
     <Compile Include="nUnitTests.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
