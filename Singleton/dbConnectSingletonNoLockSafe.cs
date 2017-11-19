@@ -10,9 +10,10 @@ namespace Singleton
 {
     class dbConnectSingletonNoLockSafe : IDataContext
     {
-        private static dbConnectSingletonNoLockSafe instance = new dbConnectSingletonNoLockSafe();
+        private static Lazy<dbConnectSingletonNoLockSafe> instance = new Lazy<dbConnectSingletonNoLockSafe>(
+            ()=> new dbConnectSingletonNoLockSafe());
 
-        public static dbConnectSingletonNoLockSafe Instance => instance;
+        public static dbConnectSingletonNoLockSafe Instance => instance.Value;
 
         private static int instancesCount;
 
