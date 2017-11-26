@@ -17,6 +17,7 @@ namespace Builder
         public void BuildCar()
         {
             Console.WriteLine("We have new order, time to build new car! Let's move!");
+            Console.ReadKey();
             List<Task> taskList = new List<Task>();
             taskList.Add(Task.Factory.StartNew(() => _carBuilder.BuildBody()));
             taskList.Add(Task.Factory.StartNew(() => _carBuilder.BuildEngine()));

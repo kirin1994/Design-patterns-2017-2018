@@ -47,8 +47,8 @@ namespace Builder
             Console.WriteLine($"Body option:{_body.GetOption()}");
             Console.WriteLine($"Engine HP:{_engine.GetPower()}");
             Console.WriteLine($"Engine max speed:{_engine.GetMaxSpeed()}");
-            Console.WriteLine($"Suspension height (cm) {_suspension.GetHeight()}");
-            Console.WriteLine($"Suspension option {_suspension.GetType()}");
+            Console.WriteLine($"Suspension height (cm): {_suspension.GetHeight()}");
+            Console.WriteLine($"Suspension option: {_suspension.GetOption()}");
             Console.ReadKey();
         }
     }
