@@ -5,7 +5,7 @@ using System.Text;
 namespace Prototype
 {
     [Serializable]
-    class Suspension
+    class Suspension : ICloneable
     {
         public string Type;
         public Damper Damper;
@@ -14,6 +14,17 @@ namespace Prototype
         {
             Type = type;
             Damper = damper;
+        }
+
+        public Suspension(Suspension original)
+        {
+            Type = original.Type;
+            Damper = new Damper(original.Damper);
+        }
+
+        public object Clone()
+        {
+            return new Suspension(Type, (Damper)Damper.Clone());
         }
     }
 }

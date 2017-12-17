@@ -5,7 +5,7 @@ using System.Text;
 namespace Prototype
 {
     [Serializable]
-    class Damper
+    class Damper : ICloneable
     {
         public int Height;
         public int Weight;
@@ -14,6 +14,17 @@ namespace Prototype
         {
             Height = height;
             Weight = weight;
+        }
+
+        public Damper(Damper original)
+        {
+            Weight = original.Weight;
+            Height = original.Height;
+        }
+
+        public object Clone()
+        {
+            return new Damper(Height, Weight);
         }
     }
 }
